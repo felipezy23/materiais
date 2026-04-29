@@ -1,58 +1,120 @@
-const botoes = document.querySelectorAll(".botao");
-const textos = document.querySelectorAll(".aba-conteudo");
+const sections = [
 
-for (let i = 0; i < botoes.length; i++) {
-    botoes[i].onclick = function () {
+  {
+    title: '1. Aritmética e Fundamentos',
+    topics: [
+      'Frações',
+      'Potenciação',
+      'Radiciação',
+      'Razão e proporção',
+      'Porcentagem'
+    ]
+  },
 
-        for (let j = 0; j < botoes.length; j++) {
-            botoes[j].classList.remove("ativo");
-            textos[j].classList.remove("ativo");
-        }
+  {
+    title: '2. Álgebra Básica',
+    topics: [
+      'Produtos notáveis',
+      'Fatoração',
+      'Frações algébricas',
+      'Polinômios'
+    ]
+  },
 
-        botoes[i].classList.add("ativo");
-        textos[i].classList.add("ativo");
-    }
-}
+  {
+    title: '3. Equações e Inequações',
+    topics: [
+      'Equação do 1º grau',
+      'Inequações',
+      'Equação do 2º grau'
+    ]
+  },
 
-const contadores = document.querySelectorAll(".contador");
-const tempoObjetivo1 = new Date("2025-10-05T00:00:00");
-const tempoObjetivo2 = new Date("2025-12-05T00:00:00");
-const tempoObjetivo3 = new Date("2025-12-30T00:00:00");
-const tempoObjetivo4 = new Date("2025-02-01T00:00:00");
+  {
+    title: '4. Funções',
+    topics: [
+      'Função afim',
+      'Função quadrática',
+      'Função exponencial',
+      'Função logarítmica'
+    ]
+  },
 
-const tempos = [tempoObjetivo1, tempoObjetivo2, tempoObjetivo3, tempoObjetivo4];
+  {
+    title: '5. Exponenciais e Logaritmos',
+    topics: [
+      'Equação exponencial',
+      'Propriedades dos logaritmos',
+      'Equação logarítmica'
+    ]
+  },
 
+  {
+    title: '6. Geometria Plana',
+    topics: [
+      'Triângulos',
+      'Pitágoras',
+      'Circunferência',
+      'Áreas'
+    ]
+  },
 
-function calculaTempo(tempoObjetivo) {
-    let tempoAtual = new Date();
-    let tempoFinal = tempoObjetivo - tempoAtual;
-    let segundos = Math.floor(tempoFinal / 1000);
-    let minutos = Math.floor(segundos / 60);
-    let horas = Math.floor(minutos / 60);
-    let dias = Math.floor(horas / 24);
+  {
+    title: '7. Trigonometria',
+    topics: [
+      'Seno',
+      'Cosseno',
+      'Tangente',
+      'Círculo trigonométrico'
+    ]
+  },
 
-    segundos %= 60;
-    minutos %= 60;
-    horas %= 24;
-    if (tempoFinal > 0) {
-        return [dias, horas, minutos, segundos];
-    } else {
-        return [0, 0, 0, 0];
-    }
-}
+  {
+    title: '8. Pré-Cálculo',
+    topics: [
+      'Limites intuitivos',
+      'Continuidade',
+      'Funções inversas'
+    ]
+  },
 
-function atualizaCronometro() {
-    for (let i = 0; i < contadores.length; i++) {
-        document.getElementById("dias" + i).textContent = calculaTempo(tempos[i])[0];
-        document.getElementById("horas" + i).textContent = calculaTempo(tempos[i])[1];
-        document.getElementById("min" + i).textContent = calculaTempo(tempos[i])[2];
-        document.getElementById("seg" + i).textContent = calculaTempo(tempos[i])[3];
-    }
-}
+  {
+    title: '9. Cálculo',
+    topics: [
+      'Limites',
+      'Derivadas',
+      'Integrais'
+    ]
+  }
 
-function comecaCronometro() {
-    atualizaCronometro();
-    setInterval(atualizaCronometro, 1000);
-}
+]
 
-comecaCronometro();
+const roadmap = document.getElementById('roadmap')
+
+sections.forEach(section => {
+
+  const div = document.createElement('div')
+
+  div.classList.add('section')
+
+  div.innerHTML = `
+    <h2>${section.title}</h2>
+
+    <div class="topics">
+
+      ${section.topics.map(topic => `
+        <label class="topic">
+
+          <input type="checkbox">
+
+          <span>${topic}</span>
+
+        </label>
+      `).join('')}
+
+    </div>
+  `
+
+  roadmap.appendChild(div)
+
+})
