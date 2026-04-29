@@ -34,122 +34,67 @@ const sections = [
       'Equação do 2º grau',
       'Inequação do 2º grau'
     ]
-  },
-
-  {
-    title: '4. Funções',
-    topics: [
-      'Conceito de função',
-      'Domínio e imagem',
-      'Função afim',
-      'Função quadrática',
-      'Função exponencial',
-      'Função logarítmica'
-    ]
-  },
-
-  {
-    title: '5. Exponenciais e Logaritmos',
-    topics: [
-      'Equação exponencial',
-      'Inequação exponencial',
-      'Definição de logaritmo',
-      'Propriedades dos logaritmos',
-      'Equação logarítmica'
-    ]
-  },
-
-  {
-    title: '6. Geometria Plana',
-    topics: [
-      'Ângulos',
-      'Triângulos',
-      'Teorema de Pitágoras',
-      'Circunferência',
-      'Áreas'
-    ]
-  },
-
-  {
-    title: '7. Trigonometria',
-    topics: [
-      'Seno',
-      'Cosseno',
-      'Tangente',
-      'Círculo trigonométrico',
-      'Identidades trigonométricas'
-    ]
-  },
-
-  {
-    title: '8. Geometria Espacial',
-    topics: [
-      'Prismas',
-      'Cilindros',
-      'Cones',
-      'Esferas',
-      'Volume'
-    ]
-  },
-
-  {
-    title: '9. Geometria Analítica',
-    topics: [
-      'Plano cartesiano',
-      'Distância entre pontos',
-      'Reta',
-      'Parábola'
-    ]
-  },
-
-  {
-    title: '10. Pré-Cálculo',
-    topics: [
-      'Composição de funções',
-      'Funções inversas',
-      'Limites intuitivos',
-      'Continuidade',
-      'Sequências'
-    ]
-  },
-
-  {
-    title: '11. Cálculo',
-    topics: [
-      'Limites',
-      'Derivadas',
-      'Integrais'
-    ]
   }
 
 ]
 
 const roadmap = document.getElementById('roadmap')
 
-sections.forEach(section => {
+sections.forEach((section, sectionIndex) => {
 
   const div = document.createElement('div')
 
   div.classList.add('section')
 
+  let topicsHTML = ''
+
+  section.topics.forEach((topic, topicIndex) => {
+
+    const checkboxId = `check-${sectionIndex}-${topicIndex}`
+
+    const checked =
+      localStorage.getItem(checkboxId) === 'true'
+
+    topicsHTML += `
+      <label class="topic">
+
+        <input
+          type="checkbox"
+          id="${checkboxId}"
+          ${checked ? 'checked' : ''}
+        >
+
+        <span>${topic}</span>
+
+      </label>
+    `
+  })
+
   div.innerHTML = `
     <h2>${section.title}</h2>
 
     <div class="topics">
-
-      ${section.topics.map(topic => `
-        <label class="topic">
-
-          <input type="checkbox">
-
-          <span>${topic}</span>
-
-        </label>
-      `).join('')}
-
+      ${topicsHTML}
     </div>
   `
 
   roadmap.appendChild(div)
+
+})
+
+const checkboxes = document.querySelectorAll(
+  'input[type="checkbox"]'
+)
+
+checkboxes.forEach(checkbox => {
+
+  checkbox.addEventListener('change', () => {
+
+    localStorage.setItem(
+      checkbox.id,
+      checkbox.checked
+    )
+
+  })
 
 })
