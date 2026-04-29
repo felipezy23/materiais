@@ -7,16 +7,19 @@ const sections = [
       'Potenciação',
       'Radiciação',
       'Razão e proporção',
-      'Porcentagem'
+      'Porcentagem',
+      'Notação científica'
     ]
   },
 
   {
     title: '2. Álgebra Básica',
     topics: [
+      'Expressões algébricas',
       'Produtos notáveis',
       'Fatoração',
       'Frações algébricas',
+      'Racionalização',
       'Polinômios'
     ]
   },
@@ -25,14 +28,19 @@ const sections = [
     title: '3. Equações e Inequações',
     topics: [
       'Equação do 1º grau',
+      'Sistemas lineares',
       'Inequações',
-      'Equação do 2º grau'
+      'Módulo',
+      'Equação do 2º grau',
+      'Inequação do 2º grau'
     ]
   },
 
   {
     title: '4. Funções',
     topics: [
+      'Conceito de função',
+      'Domínio e imagem',
       'Função afim',
       'Função quadrática',
       'Função exponencial',
@@ -44,6 +52,8 @@ const sections = [
     title: '5. Exponenciais e Logaritmos',
     topics: [
       'Equação exponencial',
+      'Inequação exponencial',
+      'Definição de logaritmo',
       'Propriedades dos logaritmos',
       'Equação logarítmica'
     ]
@@ -52,8 +62,9 @@ const sections = [
   {
     title: '6. Geometria Plana',
     topics: [
+      'Ângulos',
       'Triângulos',
-      'Pitágoras',
+      'Teorema de Pitágoras',
       'Circunferência',
       'Áreas'
     ]
@@ -65,21 +76,45 @@ const sections = [
       'Seno',
       'Cosseno',
       'Tangente',
-      'Círculo trigonométrico'
+      'Círculo trigonométrico',
+      'Identidades trigonométricas'
     ]
   },
 
   {
-    title: '8. Pré-Cálculo',
+    title: '8. Geometria Espacial',
     topics: [
+      'Prismas',
+      'Cilindros',
+      'Cones',
+      'Esferas',
+      'Volume'
+    ]
+  },
+
+  {
+    title: '9. Geometria Analítica',
+    topics: [
+      'Plano cartesiano',
+      'Distância entre pontos',
+      'Reta',
+      'Parábola'
+    ]
+  },
+
+  {
+    title: '10. Pré-Cálculo',
+    topics: [
+      'Composição de funções',
+      'Funções inversas',
       'Limites intuitivos',
       'Continuidade',
-      'Funções inversas'
+      'Sequências'
     ]
   },
 
   {
-    title: '9. Cálculo',
+    title: '11. Cálculo',
     topics: [
       'Limites',
       'Derivadas',
